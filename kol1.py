@@ -13,3 +13,20 @@
 #Do your best, show off with good, clean, well structured code - this is more important than number of features.
 #After you finish, be sure to UPLOAD this (add, commit, push) to the remote repository.
 #Good Luck
+
+import time
+import numpy as np
+
+
+mu, sigma = 0, 0.1
+
+while True:
+    
+    current_orientation = np.random.normal(mu, sigma, 1);
+    
+    angle_bet
+    
+    print("Current plane orientation : %s" % current_orientation)
+    
+    
+    time.sleep(1)
