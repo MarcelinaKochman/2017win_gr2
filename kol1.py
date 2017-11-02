@@ -15,18 +15,37 @@
 #Good Luck
 
 import time
-import numpy as np
+import random
 
+standard_deviation = 20.0
+right_plane_orientation= 5.0
 
-mu, sigma = 0, 0.1
+correction_delay = 1.5
 
-while True:
-    
-    current_orientation = np.random.normal(mu, sigma, 1);
-    
-    angle_bet
-    
-    print("Current plane orientation : %s" % current_orientation)
-    
-    
-    time.sleep(1)
+def calculate_current_plane_orientation(previous_plane_orientation) :
+	return random.gauss(previous_plane_orientation, standard_deviation)
+
+def calculate_tilt_correction(current_plane_orientation) :
+	return right_plane_orientation - current_plane_orientation
+
+def plane_orientation_after_correction(current_plane_orientation, tilt_correction) :
+	return current_plane_orientation + tilt_correction
+
+try:
+	current_plane_orientation = right_plane_orientation
+
+	while True:
+	    current_plane_orientation = calculate_current_plane_orientation(current_plane_orientation)
+	    tilt_correction = calculate_tilt_correction(current_plane_orientation)
+
+	    print("[%s] - current plane orientation" % current_plane_orientation)
+	    print("[%s] - tilt correction" % tilt_correction)
+
+	    current_plane_orientation = plane_orientation_after_correction(current_plane_orientation, tilt_correction)
+
+	    print("[%s] - plane orientation after correction \n" % current_plane_orientation)
+	    
+	    time.sleep(correction_delay)
+
+except KeyboardInterrupt:
+	exit()
