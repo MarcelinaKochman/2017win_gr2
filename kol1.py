@@ -174,10 +174,7 @@ class WindAutoCorrector:
         return correct_orientation
 
     def is_not_end_of_flight(self):
-        if self.plane.get_current_plane_orientation() == self.destination_airport_coordinates:
-            return False
-        else:
-            return True
+        return self.plane.get_current_plane_orientation() != self.destination_airport_coordinates
 
 
 class FlightSimulator:
