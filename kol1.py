@@ -25,8 +25,6 @@ CoordinatesPolar = namedtuple('CoordinatesPolar', 'rho phi')
 CoordinatesAir = namedtuple('CoordinatesAir', 'angle force')
 
 standard_deviation = 3.0
-right_plane_orientation = 5.0
-
 steps_number = 10.0
 
 
@@ -69,12 +67,6 @@ class MathUtil:
         x = rho * math.cos(math.radians(phi))
         y = rho * math.sin(math.radians(phi))
         return Coordinates(x, y)
-
-    @staticmethod
-    def cartesian_to_polar(x, y):
-        rho = math.sqrt(x ** 2 + y ** 2)
-        phi = math.degrees(math.atan2(y, x))
-        return CoordinatesPolar(rho, phi)
 
     @staticmethod
     def get_random_coordinates():
